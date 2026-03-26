@@ -8,13 +8,13 @@
   {#if show}
     <div class="hello z-50 text-center" data-flip-id="text">
       <div
-        class="text-5xl md:text-7xl font-bold tracking-tighter uppercase italic"
+        class="cyber-title text-5xl md:text-7xl font-bold tracking-tighter uppercase"
       >
-        <span class="block text-cyan-400">Cyber</span>
-        <span class="block text-emerald-400">Défense</span>
-        <span class="block text-white">Portfolio</span>
+        Cyber Défense Portfolio
       </div>
-      <div class="text-xl md:text-2xl font-medium tracking-wide text-base-300 mt-3 normal-case not-italic">
+      <div
+        class="cyber-subtitle text-xl md:text-2xl font-medium tracking-wide mt-3 normal-case"
+      >
         MAVOUNGOU Sylvia
       </div>
     </div>
@@ -23,4 +23,21 @@
 </div>
 
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap");
+
+  .cyber-title {
+    font-family: "Cormorant Garamond", serif;
+    background: linear-gradient(135deg, #c084fc 0%, #a78bfa 40%, #7dd3fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.04em;
+  }
+
+  .cyber-subtitle {
+    font-family: "Cormorant Garamond", serif;
+    color: #c4b5fd;
+    letter-spacing: 0.15em;
+    font-style: italic;
+  }
 </style>

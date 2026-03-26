@@ -71,18 +71,20 @@
       margin-bottom: 0.75rem;
     }
 
-    /* Carte de contenu */
     .timeline-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 1rem;
       padding: 1.5rem 2rem;
-      transition: border-color 0.2s, transform 0.2s;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
     .timeline-card:hover {
-      border-color: var(--cyan-dim);
-      transform: translateX(4px);
+      border-color: var(--cyan);
+      transform: scale(1.02);
+      box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+      z-index: 10;
     }
 
     .timeline-card h2 {
@@ -122,8 +124,8 @@
     <ul class="navbar-links">
       <li><a href="/">accueil</a></li>
       <li><a href="/about.html">à propos</a></li>
-      <li><a href="/projects.html">projets</a></li>
       <li><a href="/parcours.html" class="active">parcours</a></li>
+      <li><a href="/projects.html">projets</a></li>
       <li><a href="/contact.html">contact</a></li>
     </ul>
   </nav>
@@ -147,19 +149,7 @@
     <!-- Frise chronologique -->
     <div class="timeline" id="timeline" aria-label="Frise chronologique du parcours académique">
 
-      <!-- Entrée 1 : 2024-2025 -->
-      <div class="timeline-item" aria-label="2024 à 2025">
-        <div class="timeline-dot" role="presentation"></div>
-        <span class="timeline-date">2024 – 2025</span>
-        <div class="timeline-card">
-          <h2>Terminale Scientifique D</h2>
-          <p>
-            Terminale Scientifique D avec spécialités mathématiques, physique et SVT.
-          </p>
-        </div>
-      </div>
-
-      <!-- Entrée 2 : 2025-2026 -->
+      <!-- Entrée 1 : 2025-2026 -->
       <div class="timeline-item" aria-label="2025 à 2026">
         <div class="timeline-dot" role="presentation"></div>
         <span class="timeline-date">2025 – 2026</span>
@@ -169,6 +159,18 @@
             Formation axée sur la programmation, les systèmes informatiques, les réseaux
             et les bases de la cybersécurité. Développement de compétences en algorithmique,
             développement web et sécurité.
+          </p>
+        </div>
+      </div>
+
+      <!-- Entrée 2 : 2024-2025 -->
+      <div class="timeline-item" aria-label="2024 à 2025">
+        <div class="timeline-dot" role="presentation"></div>
+        <span class="timeline-date">2024 – 2025</span>
+        <div class="timeline-card">
+          <h2>Terminale Scientifique D</h2>
+          <p>
+            Terminale Scientifique D avec spécialités mathématiques, physique et SVT.
           </p>
         </div>
       </div>

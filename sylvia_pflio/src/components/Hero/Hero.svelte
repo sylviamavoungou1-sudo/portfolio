@@ -76,20 +76,21 @@
         <span class="sr-only">Cyber Défense Portfolio — MAVOUNGOU Sylvia</span>
         <div class="hello z-30 text-right" data-flip-id="text">
           <!-- Titre tapé ligne par ligne -->
-          <div class="text-4xl md:text-6xl font-bold tracking-tighter uppercase italic min-h-[1em]">
-            <span class="text-cyan-400">{displayedTitle.slice(0, 5)}</span><span
-              class="text-emerald-400">{displayedTitle.slice(5, 12)}</span
-            ><span class="text-white">{displayedTitle.slice(12)}</span
-            >{#if !typingDone || displayedSubtitle.length === 0}<span
-                class="inline-block w-[3px] h-[0.9em] bg-cyan-400 align-middle ml-1 {showCursor
+          <div
+            class="cyber-title text-4xl md:text-6xl font-bold tracking-tighter uppercase min-h-[1em]"
+          >
+            {displayedTitle}{#if !typingDone || displayedSubtitle.length === 0}<span
+                class="inline-block w-[3px] h-[0.9em] bg-[#0d1c3d] align-middle ml-1 {showCursor
                   ? 'opacity-100'
                   : 'opacity-0'} transition-opacity"
               ></span>{/if}
           </div>
           <!-- Sous-titre avec curseur -->
-          <div class="text-xl md:text-2xl font-medium tracking-wide text-base-300 mt-3 normal-case not-italic min-h-[1em]">
+          <div
+            class="cyber-subtitle text-xl md:text-2xl font-medium tracking-wide mt-3 normal-case min-h-[1em]"
+          >
             {displayedSubtitle}{#if displayedSubtitle.length > 0}<span
-                class="inline-block w-[2px] h-[0.85em] bg-base-300 align-middle ml-0.5 {showCursor
+                class="inline-block w-[2px] h-[0.85em] bg-[#1a3a6e] align-middle ml-0.5 {showCursor
                   ? 'opacity-100'
                   : 'opacity-0'} transition-opacity"
               ></span>{/if}
@@ -99,3 +100,23 @@
     </h1>
   </div>
 </div>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap");
+
+  .cyber-title {
+    font-family: "Cormorant Garamond", serif;
+    background: linear-gradient(135deg, #c084fc 0%, #a78bfa 40%, #7dd3fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.04em;
+  }
+
+  .cyber-subtitle {
+    font-family: "Cormorant Garamond", serif;
+    color: #c4b5fd;
+    letter-spacing: 0.15em;
+    font-style: italic;
+  }
+</style>
