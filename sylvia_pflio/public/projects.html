@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projets — Sylvia Mavoungou Pangou</title>
+    <meta name="description" content="Découvrez les projets informatiques de Sylvia Mavoungou Pangou." />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .project-card:hover {
+            border-color: var(--cyan-dim);
+            transform: translateY(-4px);
+        }
+
+        .project-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            flex: 1;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .tech-tag {
+            background: rgba(34, 211, 238, 0.1);
+            color: var(--cyan);
+            padding: 0.3rem 0.6rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 4rem 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">sylvia.</a>
+        <ul class="navbar-links">
+            <li><a href="/">accueil</a></li>
+            <li><a href="/about.html">à propos</a></li>
+            <li><a href="/projects.html" class="active">projets</a></li>
+            <li><a href="/contact.html">contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="page">
+
+        <div style="margin-top: 2.5rem;">
+            <h1 class="section-title">mes projets.</h1>
+            <p class="section-subtitle">Une sélection de mes travaux universitaires et personnels</p>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- Projet 1 -->
+            <article class="project-card">
+                <div class="project-content">
+                    <h2 class="project-title">Bibliothèque Numérique</h2>
+                    <p class="project-description">
+                        Conception et développement d'une application de gestion pour bibliothèque numérique, facilitant
+                        l'accès et le tri des ressources.
+                    </p>
+                    <div class="tech-list">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">C++</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Projet 2 -->
+            <article class="project-card">
+                <div class="project-content">
+                    <h2 class="project-title">Algorithmes de Tri</h2>
+                    <p class="project-description">
+                        Implémentation et comparaison de performance de différents algorithmes de tri (bulle, fusion,
+                        rapide) sur de grands ensembles de données.
+                    </p>
+                    <div class="tech-list">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Projet 3 -->
+            <article class="project-card">
+                <div class="project-content">
+                    <h2 class="project-title">Portes Ouvertes IUT</h2>
+                    <p class="project-description">
+                        Création d'un site web vitrine dédié à la journée portes ouvertes du département informatique de
+                        l'IUT.
+                    </p>
+                    <div class="tech-list">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">Bootstrap</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Projet 4 -->
+            <article class="project-card">
+                <div class="project-content">
+                    <h2 class="project-title">Calculatrice à Polynômes</h2>
+                    <p class="project-description">
+                        Application mathématique permettant d'effectuer des opérations complexes (addition,
+                        multiplication, dérivation) sur des polynômes.
+                    </p>
+                    <div class="tech-list">
+                        <span class="tech-tag">Python (Math)</span>
+                        <span class="tech-tag">Algorithmique</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Projet 5 -->
+            <article class="project-card">
+                <div class="project-content">
+                    <h2 class="project-title">Gestion de Base de Données</h2>
+                    <p class="project-description">
+                        Modélisation UML et implémentation d'une base de données relationnelle complète pour répondre
+                        aux besoins d'une entreprise fictive.
+                    </p>
+                    <div class="tech-list">
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">MCD/MLD</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Projet 6 -->
+            <article class="project-card">
+                <div class="project-content">
+                    <h2 class="project-title">Poste de Développement</h2>
+                    <p class="project-description">
+                        Configuration technique et installation d'un environnement complet sous Linux (machines
+                        virtuelles, outils de build, gestion de packages).
+                    </p>
+                    <div class="tech-list">
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Bash</span>
+                        <span class="tech-tag">Système</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="divider"></div>
+
+    </main>
+
+    <footer class="footer">
+        &copy; 2026 MAVOUNGOU PANGOU Sylvia — Construit avec passion
+    </footer>
+
+</body>
+
+</html>
