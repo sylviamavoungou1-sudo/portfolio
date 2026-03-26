@@ -1,5 +1,5 @@
 
-export const items = ['accueil', 'à propos', 'projets', 'contact'];
+export const items = ['accueil', 'à propos', 'projets', 'parcours', 'contact'];
 
 export type Item = (typeof items)[number];
 
@@ -9,5 +9,6 @@ export const links: Record<string, string> = {
   'accueil': '/#home',
   'à propos': '/about.html',
   'projets': '/projects.html',
+  'parcours': '/parcours',
   'contact': '/contact.html',
 };

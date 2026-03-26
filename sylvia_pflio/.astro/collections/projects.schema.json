@@ -1,0 +1,93 @@
+{
+  "$ref": "#/definitions/projects",
+  "definitions": {
+    "projects": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "thumbnail": {
+          "type": "string"
+        },
+        "date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "featured": {
+          "type": "boolean"
+        },
+        "video": {
+          "type": "string"
+        },
+        "mainTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "aspect": {
+          "type": "string"
+        },
+        "shortDescription": {
+          "type": "string"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "projectUrl": {
+          "type": "string"
+        },
+        "codeUrl": {
+          "type": "string"
+        },
+        "demo": {
+          "type": "string"
+        },
+        "iframe": {
+          "type": "string"
+        },
+        "projectLayout": {
+          "type": "string",
+          "enum": [
+            "grid",
+            "full",
+            "carousel",
+            "tiered"
+          ]
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "thumbnail",
+        "date"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

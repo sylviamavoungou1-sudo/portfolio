@@ -11,8 +11,11 @@
         class="text-5xl md:text-7xl font-bold tracking-tighter uppercase italic"
       >
         <span class="block text-cyan-400">Cyber</span>
-        <span class="block text-emerald-400">Defense</span>
+        <span class="block text-emerald-400">Défense</span>
         <span class="block text-white">Portfolio</span>
+      </div>
+      <div class="text-xl md:text-2xl font-medium tracking-wide text-base-300 mt-3 normal-case not-italic">
+        MAVOUNGOU Sylvia
       </div>
     </div>
   {/if}

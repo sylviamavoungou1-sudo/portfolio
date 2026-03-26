@@ -1,0 +1,980 @@
+{
+  "$ref": "#/definitions/posts",
+  "definitions": {
+    "posts": {
+      "type": "object",
+      "properties": {
+        "uri": {
+          "type": "string"
+        },
+        "cid": {
+          "type": "string"
+        },
+        "author": {
+          "type": "object",
+          "properties": {
+            "did": {
+              "type": "string"
+            },
+            "handle": {
+              "type": "string"
+            },
+            "displayName": {
+              "type": "string"
+            },
+            "avatar": {
+              "type": "string",
+              "format": "uri"
+            },
+            "associated": {
+              "type": "object",
+              "properties": {
+                "chat": {
+                  "type": "object",
+                  "properties": {
+                    "allowIncoming": {
+                      "type": "string",
+                      "enum": [
+                        "following",
+                        "all",
+                        "none"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "labels": {
+              "type": "array"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "did",
+            "handle",
+            "displayName",
+            "createdAt"
+          ],
+          "additionalProperties": false
+        },
+        "record": {
+          "type": "object",
+          "properties": {
+            "$type": {
+              "type": "string",
+              "const": "app.bsky.feed.post"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "langs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "text": {
+              "type": "string"
+            },
+            "reply": {
+              "type": "object",
+              "properties": {
+                "parent": {
+                  "type": "object",
+                  "properties": {
+                    "cid": {
+                      "type": "string"
+                    },
+                    "uri": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "cid",
+                    "uri"
+                  ],
+                  "additionalProperties": false
+                },
+                "root": {
+                  "type": "object",
+                  "properties": {
+                    "cid": {
+                      "type": "string"
+                    },
+                    "uri": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "cid",
+                    "uri"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "parent",
+                "root"
+              ],
+              "additionalProperties": false
+            },
+            "embed": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string",
+                      "const": "app.bsky.embed.external"
+                    },
+                    "external": {
+                      "type": "object",
+                      "properties": {
+                        "uri": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "thumb": {
+                          "type": "object",
+                          "properties": {
+                            "$type": {
+                              "type": "string",
+                              "const": "blob"
+                            },
+                            "ref": {
+                              "type": "object",
+                              "properties": {
+                                "$link": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "$link"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "mimeType": {
+                              "type": "string"
+                            },
+                            "size": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "$type",
+                            "ref",
+                            "mimeType",
+                            "size"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "uri"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "$type",
+                    "external"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string",
+                      "const": "app.bsky.embed.record"
+                    },
+                    "record": {
+                      "type": "object",
+                      "properties": {
+                        "uri": {
+                          "type": "string"
+                        },
+                        "cid": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "uri",
+                        "cid"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "$type",
+                    "record"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string",
+                      "const": "app.bsky.embed.recordWithMedia"
+                    },
+                    "record": {
+                      "type": "object",
+                      "properties": {
+                        "uri": {
+                          "type": "string"
+                        },
+                        "cid": {
+                          "type": "string"
+                        },
+                        "author": {
+                          "type": "object",
+                          "properties": {
+                            "did": {
+                              "type": "string"
+                            },
+                            "handle": {
+                              "type": "string"
+                            },
+                            "displayName": {
+                              "type": "string"
+                            },
+                            "avatar": {
+                              "type": "string",
+                              "format": "uri"
+                            }
+                          },
+                          "required": [
+                            "did",
+                            "handle",
+                            "displayName"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "value": {
+                          "type": "object",
+                          "properties": {
+                            "$type": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "text": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$type",
+                            "createdAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "uri",
+                        "cid",
+                        "author",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/definitions/posts/properties/record/properties/embed/anyOf/0"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$type": {
+                              "type": "string",
+                              "const": "app.bsky.embed.images"
+                            },
+                            "images": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "image": {
+                                    "type": "object",
+                                    "properties": {
+                                      "$type": {
+                                        "type": "string",
+                                        "const": "blob"
+                                      },
+                                      "ref": {
+                                        "type": "object",
+                                        "properties": {
+                                          "$link": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "$link"
+                                        ],
+                                        "additionalProperties": false
+                                      },
+                                      "mimeType": {
+                                        "type": "string"
+                                      },
+                                      "size": {
+                                        "type": "number"
+                                      }
+                                    },
+                                    "required": [
+                                      "$type",
+                                      "ref",
+                                      "mimeType",
+                                      "size"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  "alt": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "image",
+                                  "alt"
+                                ],
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          "required": [
+                            "$type",
+                            "images"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "$type",
+                    "record",
+                    "media"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "$ref": "#/definitions/posts/properties/record/properties/embed/anyOf/2/properties/media/anyOf/1"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string",
+                      "const": "app.bsky.embed.list"
+                    },
+                    "list": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "uri": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "uri",
+                              "label"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "items"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "$type",
+                    "list"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string",
+                      "const": "app.bsky.embed.starterPack"
+                    },
+                    "starterPack": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "members": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "did": {
+                                "type": "string"
+                              },
+                              "handle": {
+                                "type": "string"
+                              },
+                              "displayName": {
+                                "type": "string"
+                              },
+                              "avatar": {
+                                "type": "string",
+                                "format": "uri"
+                              }
+                            },
+                            "required": [
+                              "did",
+                              "handle"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "members"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "$type",
+                    "starterPack"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string",
+                      "const": "app.bsky.embed.external#view"
+                    },
+                    "external": {
+                      "type": "object",
+                      "properties": {
+                        "uri": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "thumb": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      },
+                      "required": [
+                        "uri"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "$type",
+                    "external"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string",
+                      "const": "app.bsky.embed.record#view"
+                    },
+                    "record": {
+                      "type": "object",
+                      "properties": {
+                        "uri": {
+                          "type": "string"
+                        },
+                        "cid": {
+                          "type": "string"
+                        },
+                        "author": {
+                          "type": "object",
+                          "properties": {
+                            "did": {
+                              "type": "string"
+                            },
+                            "handle": {
+                              "type": "string"
+                            },
+                            "displayName": {
+                              "type": "string"
+                            },
+                            "avatar": {
+                              "type": "string",
+                              "format": "uri"
+                            }
+                          },
+                          "required": [
+                            "did",
+                            "handle",
+                            "displayName"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "value": {
+                          "type": "object",
+                          "properties": {
+                            "$type": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "text": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$type",
+                            "createdAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "uri",
+                        "cid",
+                        "author",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "$type",
+                    "record"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string",
+                      "const": "app.bsky.embed.recordWithMedia#view"
+                    },
+                    "record": {
+                      "type": "object",
+                      "properties": {
+                        "uri": {
+                          "type": "string"
+                        },
+                        "cid": {
+                          "type": "string"
+                        },
+                        "author": {
+                          "type": "object",
+                          "properties": {
+                            "did": {
+                              "type": "string"
+                            },
+                            "handle": {
+                              "type": "string"
+                            },
+                            "displayName": {
+                              "type": "string"
+                            },
+                            "avatar": {
+                              "type": "string",
+                              "format": "uri"
+                            }
+                          },
+                          "required": [
+                            "did",
+                            "handle",
+                            "displayName"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "value": {
+                          "type": "object",
+                          "properties": {
+                            "$type": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "text": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$type",
+                            "createdAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "uri",
+                        "cid",
+                        "author",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/definitions/posts/properties/record/properties/embed/anyOf/6"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$type": {
+                              "type": "string",
+                              "const": "app.bsky.embed.images#view"
+                            },
+                            "images": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "thumb": {
+                                    "type": "string",
+                                    "format": "uri"
+                                  },
+                                  "fullsize": {
+                                    "type": "string",
+                                    "format": "uri"
+                                  },
+                                  "alt": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "thumb",
+                                  "fullsize"
+                                ],
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          "required": [
+                            "$type",
+                            "images"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "$type",
+                    "record",
+                    "media"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "$ref": "#/definitions/posts/properties/record/properties/embed/anyOf/8/properties/media/anyOf/1"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string",
+                      "const": "app.bsky.embed.list#view"
+                    },
+                    "list": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "uri": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "uri",
+                              "label"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "items"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "$type",
+                    "list"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string",
+                      "const": "app.bsky.embed.starterPack#view"
+                    },
+                    "starterPack": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "members": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "did": {
+                                "type": "string"
+                              },
+                              "handle": {
+                                "type": "string"
+                              },
+                              "displayName": {
+                                "type": "string"
+                              },
+                              "avatar": {
+                                "type": "string",
+                                "format": "uri"
+                              }
+                            },
+                            "required": [
+                              "did",
+                              "handle"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "members"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "$type",
+                    "starterPack"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "$type"
+                  ],
+                  "additionalProperties": true
+                }
+              ]
+            },
+            "facets": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "index": {
+                    "type": "object",
+                    "properties": {
+                      "byteStart": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "byteEnd": {
+                        "type": "number",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "byteStart",
+                      "byteEnd"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "features": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$type": {
+                              "type": "string",
+                              "const": "app.bsky.richtext.facet#mention"
+                            },
+                            "did": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$type",
+                            "did"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$type": {
+                              "type": "string",
+                              "const": "app.bsky.richtext.facet#link"
+                            },
+                            "uri": {
+                              "type": "string",
+                              "format": "uri"
+                            }
+                          },
+                          "required": [
+                            "$type",
+                            "uri"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$type": {
+                              "type": "string",
+                              "const": "app.bsky.richtext.facet#tag"
+                            },
+                            "tag": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "$type",
+                            "tag"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {},
+                          "additionalProperties": true
+                        }
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "index",
+                  "features"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "$type",
+            "createdAt"
+          ],
+          "additionalProperties": true
+        },
+        "embed": {
+          "$ref": "#/definitions/posts/properties/record/properties/embed"
+        },
+        "replyCount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "repostCount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "likeCount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "quoteCount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "indexedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "labels": {
+          "type": "array"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri",
+        "cid",
+        "author",
+        "record",
+        "replyCount",
+        "repostCount",
+        "likeCount",
+        "quoteCount",
+        "indexedAt"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
